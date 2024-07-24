@@ -55,6 +55,15 @@ class UserService {
         }
     }
 
+    async isAdmin(id) {
+        try {
+            return this.userRepository.isAdmin(id);
+        } catch (error) {
+            console.log("Something went wrong at checking is admin");
+            throw error;
+        }
+    }
+
      createToken(user) {
         try {
             const token = jwt.sign(user,JWT_KEY,{ expiresIn: '7d' })

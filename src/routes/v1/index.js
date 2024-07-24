@@ -7,5 +7,6 @@ const router = express.Router();
 router.post("/sign-up", AuthRequestValidators.validateUserAuth, UserController.create )
 router.post("/sign-in", AuthRequestValidators.validateUserAuth, UserController.signIn)
 router.get("/isAuthenticated", AuthRequestValidators.validateUserToken, UserController.isAuthenticated )
+router.get("/isAdmin",AuthRequestValidators.validateIsAdminRequest, UserController.isAdmin)
 
 module.exports = router

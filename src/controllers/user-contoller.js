@@ -68,10 +68,31 @@ const isAuthenticated = async(req,res) => {
     }
 }
 
+const isAdmin = async(req,res) => {
+    try {
+        const response = await userService.isAdmin(req.body.id);
+        return res.status(200).json({
+            data: response,
+            success: true,
+            message: "successfully fetched for admin role",
+            err: {}
+        })
+    } catch (error) {
+        console.log("Something went wrong at user controller");
+        return res.status(500).json({
+            data:{},
+            success: false,
+            message: "not able to fetch the role",
+            err: error
+        })
+    }
+}
+
 
 
 module.exports = {
     create,
     signIn,
     isAuthenticated,
+    isAdmin,
 }
